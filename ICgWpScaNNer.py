@@ -6,7 +6,7 @@ sys.setdefaultencoding('utf8')
 
 Version = '0.2.0'  # Fixed Bugs
 
-# You are Free To Develop This Code brother But, Edit Copyright not Make You Programmer ...
+# You are Free To Develop This Code brother But, Edit Copyright not Make from You Programmer ...
 # Copyright Iran-Cyber.Net -- White Hat Hackers
 
 try:
@@ -52,7 +52,8 @@ class ICGwPScaN():
             pass
         __kill_ip = self.url
         try:
-            ip = socket.gethostbyname(__kill_ip)
+            dom = str(__kill_ip).split('/')[0]
+            ip = socket.gethostbyname(dom)
             self.CheckWordpress = requests.get('http://' + self.url, timeout=5)
             if '/wp-content/' in self.CheckWordpress.text:
                 self.cls()
@@ -300,8 +301,12 @@ class ICGwPScaN():
                         plugin_NamEz[name] = s
             s = s + 1
         for name_plugins in plugin_NamEz:
+            try:
+                plugname = str(name_plugins).split(' ')[0]
+            except:
+                plugname = str(name_plugins)
             print r + '    [' + y + '+' + r + ']' + w + ' Plugin Name: ' + m + name_plugins
-            self.Plugin_NamE_Vuln_TeST(name_plugins)
+            self.Plugin_NamE_Vuln_TeST(plugname)
 
     def GeT_Theme_Name(self):
         a = re.findall('/wp-content/themes/(.*)', self.CheckWordpress.text)
