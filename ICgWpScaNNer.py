@@ -4,7 +4,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-Version = '0.2.0'  # Fixed Bugs
+Version = '1.0.0'  # Fixed Bugs
 
 # You are Free To Develop This Code brother But, Edit Copyright not Make from You Programmer ...
 # Copyright Iran-Cyber.Net -- White Hat Hackers
@@ -211,7 +211,7 @@ class ICGwPScaN():
             print y + '---------------------------------------------------'
             print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
                   ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']'
-
+# https://wpvulndb.com/searches?page=1&text=insta gallery
     def Plugin_NamE_Vuln_TeST(self, Plugin_NaME):
         num = 1
         cal = 0
@@ -219,7 +219,7 @@ class ICGwPScaN():
         while Flag:
             if Plugin_NaME == 'revslider':
                 Plugin_NaME = 'Slider Revolution'
-            url = 'https://wpvulndb.com/searches?page=' + str(num) + '&text=' + Plugin_NaME
+            url = 'https://wpvulndb.com/searches?page=' + str(num) + '&text={}&vuln_type='.format(Plugin_NaME)
             aa = requests.get(url, timeout=5)
             if 'No results found.' in aa.text:
                 Flag = False
@@ -306,7 +306,7 @@ class ICGwPScaN():
             except:
                 plugname = str(name_plugins)
             print r + '    [' + y + '+' + r + ']' + w + ' Plugin Name: ' + m + name_plugins
-            self.Plugin_NamE_Vuln_TeST(plugname)
+            self.Plugin_NamE_Vuln_TeST(name_plugins)
 
     def GeT_Theme_Name(self):
         a = re.findall('/wp-content/themes/(.*)', self.CheckWordpress.text)
@@ -314,7 +314,10 @@ class ICGwPScaN():
         if '?ver=' in a[0]:
             verz = a[0].split('?ver=')[1]
             version = re.findall('([0-9].[0-9].[0-9])', verz)
-            OK_Ver = Name_Theme + ' ' + version[0]
+            try:
+                OK_Ver = Name_Theme + ' ' + version[0]
+            except:
+                OK_Ver = Name_Theme
             if '-' in OK_Ver:
                 x2 = OK_Ver.replace('-', ' ')
                 print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x2
