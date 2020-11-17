@@ -1,8 +1,9 @@
+from importlib import reload
 import json, re, os, time, random, socket
 import sys
 
 reload(sys)
-sys.setdefaultencoding('utf8')
+#krimstock version: updated the code to python 3.0+ standards (TheGreatestHacker was here ;) )
 
 Version = '1.0.0'  # Fixed Bugs
 
@@ -12,9 +13,9 @@ Version = '1.0.0'  # Fixed Bugs
 try:
     import requests
 except ImportError:
-    print '---------------------------------------------------'
-    print '[*] pip install requests'
-    print '   [-] you need to install requests Module'
+    print('---------------------------------------------------')
+    print ('[*] pip install requests')
+    print ('   [-] you need to install requests Module')
     sys.exit()
 
 try:
@@ -29,9 +30,9 @@ try:
     res = Style.RESET_ALL
 
 except ImportError:
-    print '---------------------------------------------------'
-    print '[*] pip install colorama'
-    print '   [-] you need to install colorama Module'
+    print ('---------------------------------------------------')
+    print ('[*] pip install colorama')
+    print ('   [-] you need to install colorama Module')
     sys.exit()
 
 
@@ -58,10 +59,10 @@ class ICGwPScaN():
             if '/wp-content/' in self.CheckWordpress.text:
                 self.cls()
                 self.print_logo()
-                print r + '    [' + y + '+' + r + ']' + w + ' URL      : ' + m + self.url
-                print r + '    [' + y + '+' + r + ']' + w + ' IP Server: ' + m + ip
-                print r + '    [' + y + '+' + r + ']' + w + ' Server   : ' + m + self.CheckWordpress.headers[
-                    'server']
+                print (r + '    [' + y + '+' + r + ']' + w + ' URL      : ' + m + self.url)
+                print (r + '    [' + y + '+' + r + ']' + w + ' IP Server: ' + m + ip)
+                print (r + '    [' + y + '+' + r + ']' + w + ' Server   : ' + m + self.CheckWordpress.headers[
+                    'server'])
                 self.UserName_Enumeration()
                 self.CpaNel_UserName_Enumeration()
                 self.Version_Wp()
@@ -75,38 +76,38 @@ class ICGwPScaN():
         except socket.gaierror:
             self.cls()
             self.print_logo()
-            print y + '---------------------------------------------------'
-            print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                  ' Something worng! target.com without / in end ' + y + ']'
+            print (y + '---------------------------------------------------')
+            print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                  ' Something worng! target.com without / in end ' + y + ']')
             sys.exit()
         except requests.exceptions.ReadTimeout:
             self.cls()
             self.print_logo()
-            print y + '---------------------------------------------------'
-            print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                  ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']'
+            print (y + '---------------------------------------------------')
+            print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                  ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']')
 
     def __option(self):
         try:
-            print y + '---------------------------------------------------'
-            print r + '    [' + y + '+' + r + ']' + w + ' usage: ' + g + '    [ ' \
-                  + w + ' Python ICgWpScaN.py Domain.com ' + g + ']'
+            print (y + '---------------------------------------------------')
+            print (r + '    [' + y + '+' + r + ']' + w + ' usage: ' + g + '    [ ' \
+                  + w + ' Python ICgWpScaNNer.py Domain.com ' + g + ']')
         except:
             pass
 
     def Worng(self):
         try:
-            print y + '---------------------------------------------------'
-            print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                  ' Enter Valid Domain, We Cant Connect to Server ' + y + ']'
+            print (y + '---------------------------------------------------')
+            print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                  ' Enter Valid Domain, We Cant Connect to Server ' + y + ']')
         except:
             pass
 
     def Worng2(self):
         try:
-            print y + '---------------------------------------------------'
-            print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                  ' This WebSite Not WordPress! ' + y + ']'
+            print (y + '---------------------------------------------------')
+            print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                  ' This WebSite Not WordPress! ' + y + ']')
         except:
             pass
 
@@ -147,28 +148,28 @@ class ICGwPScaN():
                     Flag = False
                 else:
                     Usernamez = __InFo['name']
-                    print r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + m + Usernamez
+                    print (r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + m + Usernamez)
                 _cun = _cun + 1
         except:
             try:
                 if '/author/' not in __Check2.text:
-                    print r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + r + 'Not FOund'
+                    print (r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + r + 'Not FOund')
                 else:
                     find = re.findall('/author/(.*)/"', __Check2.text)
                     username = find[0].strip()
                     if '/feed' in username:
                         find = re.findall('/author/(.*)/feed/"', __Check2.text)
                         username2 = find[0].strip()
-                        print r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + m + username2
+                        print (r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + m + username2)
                     else:
-                        print r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + m + username
+                        print (r + '    [' + y + '+' + r + ']' + w + ' Wordpress Username: ' + m + username)
 
             except requests.exceptions.ReadTimeout:
                 self.cls()
                 self.print_logo()
-                print y + '---------------------------------------------------'
-                print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                      ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']'
+                print (y + '---------------------------------------------------')
+                print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                      ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']')
 
     def CpaNel_UserName_Enumeration(self):
         try:
@@ -195,22 +196,22 @@ class ICGwPScaN():
                 Cpanel_username = Hunt_Path_User()
                 Path_Host = Hunt_Path_Host()
                 if Cpanel_username == None:
-                    print r + '    [' + y + '+' + r + ']' + w + ' Cpanel Username: ' + r + 'Not FOund'
+                    print (r + '    [' + y + '+' + r + ']' + w + ' Cpanel Username: ' + r + 'Not FOund')
 
                 else:
-                    print r + '    [' + y + '+' + r + ']' + w + ' Cpanel Username: ' + m + Cpanel_username
+                    print (r + '    [' + y + '+' + r + ']' + w + ' Cpanel Username: ' + m + Cpanel_username)
 
                 if Path_Host == None:
-                    print r + '    [' + y + '+' + r + ']' + w + ' User Path Host : ' + r + 'Not FOund'
+                    print (r + '    [' + y + '+' + r + ']' + w + ' User Path Host : ' + r + 'Not FOund')
                 else:
-                    print r + '    [' + y + '+' + r + ']' + w + ' User Path Host : ' + m + Path_Host
+                    print (r + '    [' + y + '+' + r + ']' + w + ' User Path Host : ' + m + Path_Host)
 
         except requests.exceptions.ReadTimeout:
             self.cls()
             self.print_logo()
-            print y + '---------------------------------------------------'
-            print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                  ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']'
+            print (y + '---------------------------------------------------')
+            print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                  ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']')
 # https://wpvulndb.com/searches?page=1&text=insta gallery
     def Plugin_NamE_Vuln_TeST(self, Plugin_NaME):
         num = 1
@@ -231,8 +232,8 @@ class ICGwPScaN():
                     uz = 'www.wpvulndb.com/vulnerabilities/' + str(az[cal])
                     Get_title = requests.get('http://' + uz, timeout=5)
                     Title = re.findall('<title>(.*)</title>', Get_title.text.encode('utf-8'))
-                    print r + '        [' + y + 'MayBe Vuln' + r + '] ' + w + uz + ' --- ' + r + \
-                          Title[0].encode('utf-8').split('-')[0]
+                    print (r + '        [' + y + 'MayBe Vuln' + r + '] ' + w + uz + ' --- ' + r + \
+                          Title[0].encode('utf-8').split('-')[0])
                     cal = cal + 2
                 cal = 0
                 num = num + 1
@@ -244,17 +245,17 @@ class ICGwPScaN():
             try:
                 version = find[0].strip()
                 if len(version) != None:
-                    print r + '    [' + y + '+' + r + ']' + w + ' Wp Version: ' + m + version
+                    print (r + '    [' + y + '+' + r + ']' + w + ' Wp Version: ' + m + version)
                     self.Plugin_NamE_Vuln_TeST('Wordpress ' + version)
             except:
-                print r + '    [' + y + '+' + r + ']' + w + ' Wp Version: ' + r + 'Not Found'
+                print (r + '    [' + y + '+' + r + ']' + w + ' Wp Version: ' + r + 'Not Found')
 
         except requests.exceptions.ReadTimeout:
             self.cls()
             self.print_logo()
-            print y + '---------------------------------------------------'
-            print g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
-                  ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']'
+            print (y + '---------------------------------------------------')
+            print (g + '    [' + y + '+' + g + ']' + r + ' Error: ' + y + '    [ ' + w + \
+                  ' ConnectionError! Maybe server Down, Or your ip blocked! ' + y + ']')
 
     def GeT_PluGin_Name(self):
         plugin_NamEz = {}
@@ -305,7 +306,7 @@ class ICGwPScaN():
                 plugname = str(name_plugins).split(' ')[0]
             except:
                 plugname = str(name_plugins)
-            print r + '    [' + y + '+' + r + ']' + w + ' Plugin Name: ' + m + name_plugins
+            print (r + '    [' + y + '+' + r + ']' + w + ' Plugin Name: ' + m + name_plugins)
             self.Plugin_NamE_Vuln_TeST(name_plugins)
 
     def GeT_Theme_Name(self):
@@ -320,26 +321,26 @@ class ICGwPScaN():
                 OK_Ver = Name_Theme
             if '-' in OK_Ver:
                 x2 = OK_Ver.replace('-', ' ')
-                print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x2
+                print (r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x2)
                 self.Plugin_NamE_Vuln_TeST(x2)
             elif '_' in OK_Ver:
                 x = OK_Ver.replace('_', ' ')
-                print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x
+                print (r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x)
                 self.Plugin_NamE_Vuln_TeST(x)
             else:
-                print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + OK_Ver
+                print (r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + OK_Ver)
                 self.Plugin_NamE_Vuln_TeST(OK_Ver)
         else:
             if '-' in Name_Theme:
                 x2 = Name_Theme.replace('-', ' ')
-                print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x2
+                print (r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x2)
                 self.Plugin_NamE_Vuln_TeST(x2)
             elif '_' in Name_Theme:
                 x = Name_Theme.replace('_', ' ')
-                print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x
+                print (r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + x)
                 self.Plugin_NamE_Vuln_TeST(x)
             else:
-                print r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + Name_Theme
+                print (r + '    [' + y + '+' + r + ']' + w + ' Themes Name: ' + m + Name_Theme)
                 self.Plugin_NamE_Vuln_TeST(Name_Theme)
 
 
